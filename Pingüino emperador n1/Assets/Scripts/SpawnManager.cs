@@ -6,9 +6,17 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private Vector3 spawnPosition;
-    private GameObject lastSpawn = null;
+    [SerializeField] private GameObject lastSpawn = null;
     private Vector3 rightLimit;
-    
+
+    private void Start()
+    {
+        if(lastSpawn != null)
+        {
+            rightLimit = lastSpawn.transform.Find("right_limit").transform.position;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -18,6 +18,11 @@ public class FloorMovement : MonoBehaviour
     void Update()
     {
         transform.position +=(move * Time.deltaTime);        
+
+        if(transform.position.z < -4)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public float GetSpeed()

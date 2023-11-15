@@ -72,9 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2031716096995485272}
   - component: {fileID: 8190663873380519341}
-  - component: {fileID: 2793824812047895860}
   m_Layer: 0
-  m_Name: pre_tile
+  m_Name: pre_tile_noObstaculos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,29 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
---- !u!114 &2793824812047895860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4376661654972316718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea5b144d475a7c40a1a683c11584b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preObstaculos:
-  - {fileID: 3912869895391323695, guid: 76a0d86cce1281449b5239a5970452d1, type: 3}
-  - {fileID: 5677384677171117011, guid: efba3f253890a5d409f572352e72b090, type: 3}
-  - {fileID: 1261275529637792720, guid: 04ff1c966f9d53f49901a3385d1dde85, type: 3}
-  - {fileID: 6383031800334199262, guid: 45df113e5f890a14aaaa3f433bf6adab, type: 3}
-  - {fileID: 3622134008614426414, guid: 265b0ef82c0cfa748ab1b1446a5006cd, type: 3}
-  - {fileID: 790583666081383313, guid: 85eade45250a3464e9bcdbd3aeb12fa9, type: 3}
-  - {fileID: 8463282244371641670, guid: ea442a36e2f777e46baeff773caaac82, type: 3}
-  obstaculePoints:
-  - {fileID: 5021553348684113523}
-  - {fileID: 2618399314706152687}
 --- !u!1 &5021553348684113523
 GameObject:
   m_ObjectHideFlags: 0
