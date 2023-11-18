@@ -6,23 +6,29 @@ public class FloorMovement : MonoBehaviour
 {
 
     [SerializeField] private float speed = 4f;
+    private GameManager gameManager;
 
     private Vector3 move;
     // Start is called before the first frame update
     void Start()
     {
-        move = new Vector3(0,0,-speed);    
+        move = new Vector3(0,0,-speed);
+        gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position +=(move * Time.deltaTime);        
 
-        if(transform.position.z < -4)
+        if(gameManager.GetGameStart() && !gameManager.GetGamePause())
         {
-            Destroy(gameObject);
-        }
+            transform.position += (move * Time.deltaTime);
+
+            if (transform.position.z < -4)
+            {
+                Destroy(gameObject);
+            }
+        }       
     }
 
     public float GetSpeed()
