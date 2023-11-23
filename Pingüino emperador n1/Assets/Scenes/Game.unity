@@ -595,6 +595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 214981547}
+  jumpForce: 1
+  rb: {fileID: 214981550}
 --- !u!114 &214981549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,6 +1238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 433125138}
+  jumpForce: 0
+  rb: {fileID: 0}
 --- !u!1 &462146367
 GameObject:
   m_ObjectHideFlags: 0

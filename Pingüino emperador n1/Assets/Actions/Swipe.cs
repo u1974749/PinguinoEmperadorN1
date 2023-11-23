@@ -6,8 +6,6 @@ public class Swipe : MonoBehaviour
 {
 
     [SerializeField] private GameObject player;
-    [SerializeField] private float jumpForce;
-    [SerializeField] Collider rb;
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
     private bool isJumping = false; 
