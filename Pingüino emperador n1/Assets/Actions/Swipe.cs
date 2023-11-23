@@ -6,8 +6,12 @@ public class Swipe : MonoBehaviour
 {
 
     [SerializeField] private GameObject player;
+    [SerializeField] private float jumpForce;
+    [SerializeField] Collider rb;
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
+    private bool isJumping = false; 
+    private bool comingDown = false; 
 
     private void Update()
     {
@@ -50,7 +54,20 @@ public class Swipe : MonoBehaviour
     private void UpSwipe()
     {
         print("up");
-        GetComponent<Animator>().SetTrigger("isJumping");
+
+        if(isJumping == false)
+        {
+            isJumping = true;
+            player.GetComponent<Animator>().SetTrigger("isJumping");
+            if(isJumping == true)
+            {
+                if(comingDown == false)
+                {
+                    transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
+                }
+            }
+            StartCoroutine(JumpSequence());
+        }
     }
     private void DownSwipe()
     {
@@ -67,6 +84,21 @@ public class Swipe : MonoBehaviour
         print("right");
         if (player.transform.position.x < 0.24f)
             player.transform.position = new Vector3(player.transform.position.x + 0.24f, player.transform.position.y, player.transform.position.z);
+    }
+
+    IEnumerator JumpSequence()
+    {
+        //rb.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z);
+        yield return new WaitForSeconds(0.45f);
+        comingDown = true;
+        if (comingDown == true)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * -6, Space.World);
+        }
+        yield return new WaitForSeconds(0.45f);
+        isJumping = false;
+        comingDown = false;
+        player.GetComponent<Animator>().Play("Run");
     }
 
 }
