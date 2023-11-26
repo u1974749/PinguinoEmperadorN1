@@ -40,7 +40,7 @@ public class Swipe : MonoBehaviour
                 {
                     UpSwipe();
                 }
-                else
+                else if(inputVector.y < -4)
                 {
                     DownSwipe();
                 }
@@ -61,7 +61,8 @@ public class Swipe : MonoBehaviour
             {
                 if(comingDown == false)
                 {
-                    transform.Translate(Vector3.up * Time.deltaTime * 6, Space.World);
+                    player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + (5* Time.deltaTime), player.transform.position.z);
+                    //player.GetComponent<Animator>().Play("Jump");
                 }
             }
             StartCoroutine(JumpSequence());
@@ -70,6 +71,8 @@ public class Swipe : MonoBehaviour
     private void DownSwipe()
     {
         print("down");
+        player.GetComponent<Animator>().SetTrigger("isSliding");
+        player.GetComponent<Animator>().Play("Slide");
     }
     private void LeftSwipe()
     {
@@ -91,11 +94,14 @@ public class Swipe : MonoBehaviour
         comingDown = true;
         if (comingDown == true)
         {
-            transform.Translate(Vector3.up * Time.deltaTime * -6, Space.World);
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y*-2*Time.deltaTime, player.transform.position.z);
+            //transform.Translate(Vector3.up * Time.deltaTime * -10, Space.World);
         }
         yield return new WaitForSeconds(0.45f);
         isJumping = false;
         comingDown = false;
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y * 0, player.transform.position.z);
+        //transform.Translate(Vector3.up * 0, Space.World);
         player.GetComponent<Animator>().Play("Run");
     }
 
