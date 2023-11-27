@@ -12,6 +12,12 @@ public class Swipe : MonoBehaviour
     private bool comingDown = false;
     private bool isSliding = false;
     private bool slideDown = false;
+    private float yColider;
+
+    private void Start()
+    {
+        yColider = player.GetComponent<BoxCollider>().center.y;
+    }
 
     private void Update()
     {
@@ -80,6 +86,7 @@ public class Swipe : MonoBehaviour
             {
                 if (slideDown == false)
                 {
+                    player.GetComponent<BoxCollider>().center = new Vector3(player.GetComponent<BoxCollider>().center.x, player.GetComponent<BoxCollider>().center.y + (-5 * Time.deltaTime), player.GetComponent<BoxCollider>().center.z);
                     //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + (-5 * Time.deltaTime), player.transform.position.z);
                     //player.GetComponent<Animator>().Play("Jump");
                 }
@@ -126,12 +133,16 @@ public class Swipe : MonoBehaviour
         slideDown = true;
         if (slideDown == true)
         {
+            player.GetComponent<BoxCollider>().center = new Vector3(player.GetComponent<BoxCollider>().center.x, player.GetComponent<BoxCollider>().center.y + (5 * Time.deltaTime), player.GetComponent<BoxCollider>().center.z);
+
             //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y * 2 * Time.deltaTime, player.transform.position.z);
             //transform.Translate(Vector3.up * Time.deltaTime * -10, Space.World);
         }
         yield return new WaitForSeconds(0.45f);
         isSliding = false;
         slideDown = false;
+        player.GetComponent<BoxCollider>().center = new Vector3(player.GetComponent<BoxCollider>().center.x, yColider, player.GetComponent<BoxCollider>().center.z);
+
         player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y * 0, player.transform.position.z);
         player.GetComponent<Animator>().Play("Run");
     }

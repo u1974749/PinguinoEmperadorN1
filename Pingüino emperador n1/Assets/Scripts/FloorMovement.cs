@@ -9,18 +9,16 @@ public class FloorMovement : MonoBehaviour
     private GameManager gameManager;
 
     private Vector3 move;
-    // Start is called before the first frame update
+
     void Start()
     {
-        move = new Vector3(0,0,-speed);
         gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
     }
-
-    // Update is called once per frame
+   
     void Update()
     {
-
-        if(gameManager.GetGameStart() && !gameManager.GetGamePause())
+        move = new Vector3(0, 0, -gameManager.GetSpeed());
+        if (gameManager.GetGameStart() && !gameManager.GetGamePause())
         {
             transform.position += (move * Time.deltaTime);
 

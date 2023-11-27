@@ -30,6 +30,12 @@ public class Player : MonoBehaviour
             endMenu.SetActive(true);
             finalScore.text = "Final Score: " + gameManager.GetScore();
         }
+
+        if (other.CompareTag("Coin"))
+        {
+            gameManager.AddScore(10f);
+            Destroy(other.gameObject);
+        }
     }
 
 }

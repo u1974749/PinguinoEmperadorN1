@@ -36,9 +36,7 @@ public class SpawnManager : MonoBehaviour
             float speed = currentTile.GetComponent<FloorMovement>().GetSpeed();
             currentTile.transform.position = new Vector3(currentTile.transform.position.x, currentTile.transform.position.y, currentTile.transform.position.z - difDistance - speed * Time.deltaTime);
 
-            difDistance = currentTile.transform.Find("right_limit").transform.position.z - lastSpawn.transform.Find("left_limit").transform.position.z;
-
-         
+            difDistance = currentTile.transform.Find("right_limit").transform.position.z - lastSpawn.transform.Find("left_limit").transform.position.z;      
 
             lastSpawn = currentTile;
         }
